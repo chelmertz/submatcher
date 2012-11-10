@@ -1,0 +1,24 @@
+subtitler.py
+============
+
+Find all subtitles and rename them to match their movie counterparts.
+
+
+Usage
+-----
+
+If uninstalled:
+
+	python subtitler.py path
+
+If installed:
+
+	subtitler.py path
+
+
+Install
+-------
+
+	python setup.py install
+
+preferably after activating virtualenv.
