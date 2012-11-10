@@ -6,6 +6,7 @@ subtitles = ["sub", "srt", "idx"]
 movies = ["mkv", "avi"]
 
 verbose = False
+dryrun = False
 
 def log(msg):
     if verbose:
@@ -20,7 +21,6 @@ def subtitler(path=None):
     movie = None
     for root, dirs, files in os.walk(path):
         log("Entering " + root)
-        log("root: %s, dirs: %s, files: %s " %(root, dirs, files))
         for f in files:
             for s in subtitles:
                 if f.endswith("."+s):
@@ -36,7 +36,8 @@ def subtitler(path=None):
             new = root+"/"+movie+"."+sub
             if old is not new:
                 log("Renaming %s to %s" % (old, new))
-                os.rename(old, new)
+                if not dryrun:
+                    os.rename(old, new)
 
         sub = None
         subfile = None
@@ -62,6 +63,8 @@ rename the subtitle so that it matches and can be found by media programs.
     -h|--help             Show this help
     """ % (sys.argv[0])
             sys.exit(0)
+        elif arg in ["-d", "--dry-run"]:
+            dryrun = True
         else:
             path = arg
     if not subtitler(path):
