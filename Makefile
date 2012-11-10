@@ -1,8 +1,8 @@
 test: clean
-	@python test/test_subtitler.py
+	@python test/test_submatcher.py
 
-install: clean
-	@python setup.py install
+install_dev: clean
+	@pip install -e .
 
 package: clean
 	@python setup.py sdist

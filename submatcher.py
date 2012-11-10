@@ -12,7 +12,7 @@ def log(msg):
     if verbose:
         print msg
 
-def subtitler(path=None):
+def submatcher(path=None):
     """ Search path for subtitles and rename them to match their movie's counterpart """
     if not path:
         path = "."
@@ -42,7 +42,7 @@ def subtitler(path=None):
         sub = None
         subfile = None
         movie = None
-        map(subtitler, filter(lambda d: d not in (".", ".."), dirs))
+        map(submatcher, filter(lambda d: d not in (".", ".."), dirs))
 
 
 if __name__ == "__main__":
@@ -67,6 +67,6 @@ rename the subtitle so that it matches and can be found by media programs.
             dryrun = True
         else:
             path = arg
-    if not subtitler(path):
+    if not submatcher(path):
         sys.exit(1)
     sys.exit(0)
